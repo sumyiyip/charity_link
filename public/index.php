@@ -1,7 +1,7 @@
 <?php 
 	$title = "Charity Link";
 	// include the header
-	require("../../private/shared/header.php");
+	require(SHARED_PATH."/header.php");
 ?>
 
 <html>
