@@ -34,7 +34,7 @@ CREATE TABLE donation(
     FOREIGN KEY (eid) REFERENCES charity_event(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    FOREIGN KEY (eid) REFERENCES user(id)
+    FOREIGN KEY (uid) REFERENCES user(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
     
