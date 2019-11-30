@@ -25,11 +25,24 @@ define("WWW_ROOT", $doc_root);
 require_once('functions.php');
 require_once('database.php');
 require_once('validation_functions.php');
-require_once('shared/classes/databaseobject.class.php');
+require_once('classes/databaseobject.class.php');
+
+// -> All classes in directory
+foreach(glob('classes/*.class.php') as $file) {
+require_once($file);
+}
+
+// Autoload class definitions
+function my_autoload($class) {
+if(preg_match('/\A\w+\Z/', $class)) {
+    include('classes/' . $class . '.class.php');
+}
+}
+spl_autoload_register('my_autoload');
 
 $db = db_connect();
 DatabaseObject::set_database($db);
 
-$errors = [];
+$session = new Session;
 
 ?>
