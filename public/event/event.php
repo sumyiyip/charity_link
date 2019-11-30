@@ -149,11 +149,23 @@
                                     </div>
                                 </div>          
                             </div>
-                        </div>  
+                        </div> 
                       </div>
                     </div>          
                 </div>
             </div>
+
+            <br/>
+            
+            <div class="row">
+                <div class="col-sm">
+                    <a href="../eventform.php?id=<?php echo ("event_edit") ?>" class="btn btn-outline-success btn-block">Edit</a>
+                </div>
+                <div class="col-sm">
+                    <a href="<?php echo ("event_delete") ?>" class="btn btn-outline-success btn-block">Delete</a>
+                </div>
+            </div>
+                
         </div>
         
         
