@@ -1,4 +1,4 @@
 <?php
 	global $title;
-	echo("HEADER!");
+	include ("nav.php");
 ?>
