@@ -13,6 +13,7 @@ class DatabaseObject {
 
   static public function find_by_sql($sql) {
     $result = self::$database->query($sql);
+    echo ($sql);
     if(!$result) {
       exit("Database query failed.");
     }

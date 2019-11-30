@@ -115,8 +115,8 @@ function has_unique_page_menu_name($menu_name, $current_id="0") {
 }
 
 function has_unique_email($email, $current_id="0") {
-  $member = Member::find_by_email($email);
-  if($member === false || $member->id == $current_id) {
+  $user = User::find_by_email($email);
+  if($user === false || $user->id == $current_id) {
     // is unique
     return true;
   } else {

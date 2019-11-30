@@ -1,7 +1,5 @@
 <?php
 
-require('databaseobject.class.php');
-
 class CharityEvent extends DatabaseObject{
 
     static protected $table_name = 'charity_event';

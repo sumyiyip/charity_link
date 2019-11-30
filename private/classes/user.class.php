@@ -1,7 +1,5 @@
 <?php
 
-require('databaseobject.class.php');
-
 class User extends DatabaseObject{
     static protected $table_name = 'user';
     static protected $db_columns = ['id', 'user_name', 'email_add', 'hashed_password', 'phone_number'];
@@ -23,6 +21,8 @@ class User extends DatabaseObject{
         $this->email_add = $args['email_add'] ?? '';
         $this->hashed_password = $args['hashed_password'] ?? '';
         $this->phone_number = $args['phone_number'] ?? '';
+        $this->password = $args['password'] ?? '';
+        $this->confirm_password = $args['confirm_password'] ?? '';
 
     }
 
@@ -79,7 +79,7 @@ class User extends DatabaseObject{
         if($this->password_required) {
             if(is_blank($this->password)) {
                 $this->errors[] = "Password cannot be blank.";
-            } elseif (!has_length($this->password, array('min' => 12))) {
+            } elseif (!has_length($this->password, array('min' => 6))) {
                 $this->errors[] = "Password must contain 12 or more characters";
             } elseif (!preg_match('/[A-Z]/', $this->password)) {
                 $this->errors[] = "Password must contain at least 1 uppercase letter";
@@ -103,7 +103,7 @@ class User extends DatabaseObject{
 
     static public function find_by_email($email) {
         $sql = "SELECT * FROM " . static::$table_name . " ";
-        $sql .= "WHERE email='" . self::$database->escape_string($email) . "'";
+        $sql .= "WHERE email_add='" . self::$database->escape_string($email) . "'";
         $obj_array = static::find_by_sql($sql);
         if(!empty($obj_array)) {
             return array_shift($obj_array);
