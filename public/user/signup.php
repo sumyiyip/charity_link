@@ -5,7 +5,7 @@ include(SHARED_PATH . '/header.php');
 
 require_once('../../private/initialize.php');
 
-//require_not_logged_in();
+require_not_logged_in();
 
 if(is_post_request()) {
 
