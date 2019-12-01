@@ -56,7 +56,11 @@
                 <div class="col-md">
                     <div class="card">
                       <div class="card-body">
-                        <p class="card-text">Address: <?php echo ($event->address." ".$event->postcode) ?></p>
+                        <p class="card-text">Address: <?php echo ($event->address." ".$event->postcode)?> 
+                        <a href="<?php echo 'https://google.com/maps?q='.($event->postcode);?>" target="_blank">
+                                    <img src="images/gmaps.png" alt="..." style="width: 2rem; height: 2rem;" >
+                                </a>
+                        </p>
                         <p class="card-text">Start date: <?php echo ($event->start_date); ?></p>
                         <p class="card-text">End date: <?php echo ($event->end_date); ?></p>
                         <p class="card-text">Current fund: <?php echo ($event->donation_sum()); ?></p>
