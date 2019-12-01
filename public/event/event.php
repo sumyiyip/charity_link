@@ -78,89 +78,59 @@
                 <div class="col-md">
                     <div class="card text-center">
                       <div class="card-body">
-                        <h5 class="card-title"><?php echo("event_participants") ?></h5>
-                          
-                        </br>
-                        
-                        <div class="row">
-                            <div class="col-md-3">
-                                    <img src="images/user.png" class="card-img" alt="...">
-                            </div>
-                            <div class="col-md-9">
-                                <div class="card text-center">
-                                  <div class="card-body">
-                                    <h5 class="card-text"><?php echo("event_participant") ?></h5>
-                                    </div>
-                                </div>          
-                            </div>
-                        </div>  
-                        
-                        </br>
-                    
-                        <div class="row">
-                            <div class="col-md-3">
-                                    <img src="images/user.png" class="card-img" alt="...">
-                            </div>
-                            <div class="col-md-9">
-                                <div class="card text-center">
-                                  <div class="card-body">
-                                    <h5 class="card-text"><?php echo("event_participant") ?></h5>
-                                    </div>
-                                </div>          
-                            </div>
-                        </div>  
-                    
+                        <h5 class="card-title"><b>Participants</b></h5>
+                        <?php  
+                        $participants = $event->get_all_participants();
+                        foreach ($participants as $p){
+                            echo '</br>
+                                  <div class="row">
+                                      <div class="col-md-3">
+                                              <img src="images/user.png" class="card-img" alt="...">
+                                      </div>
+                                      <div class="col-md-9">
+                                          <div class="card text-center">
+                                            <div class="card-body">
+                                              <h5 class="card-text">'.$p->user_name.'</h5>
+                                              </div>
+                                          </div>          
+                                      </div>
+                                  </div>';
+                        }
+                        ?>
                       </div>      
                     </div> 
                 </div>
                 <div class="col-md">
                     <div class="card text-center">
                       <div class="card-body">
-                        <h5 class="card-text"><?php echo("event_donators") ?></h5>
+                        <h5 class="card-text"><b>Donators</b></h5>
                           
-                          </br>
                         
-                        <div class="row">
-                            <div class="col-md-3">
-                                    <img src="images/user.png" class="card-img" alt="...">
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card text-center">
-                                  <div class="card-body">
-                                    <h5 class="card-text"><?php echo("event_participant") ?></h5>
-                                    </div>
-                                </div>          
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card text-center">
-                                  <div class="card-body">
-                                    <h5 class="card-text"><?php echo("donated") ?></h5>
-                                    </div>
-                                </div>          
-                            </div>
-                        </div>  
-                        
-                        </br>
-                    
-                        <div class="row">
-                            <div class="col-md-3">
-                                    <img src="images/user.png" class="card-img" alt="...">
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card text-center">
-                                  <div class="card-body">
-                                    <h5 class="card-title"><?php echo("event_participant") ?></h5>
-                                    </div>
-                                </div>          
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card text-center">
-                                  <div class="card-body">
-                                    <h5 class="card-text"><?php echo("donated") ?></h5>
-                                    </div>
-                                </div>          
-                            </div>
-                        </div> 
+                        <?php
+                          $donators = $event->get_all_donators();
+                          foreach ($donators as $p => $d){
+                            $user = User::find_by_id($p);
+                            echo '</br> <div class="row">
+                                <div class="col-md-3">
+                                        <img src="images/user.png" class="card-img" alt="...">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card text-center">
+                                      <div class="card-body">
+                                        <h5 class="card-title">'.$user->user_name.'</h5>
+                                        </div>
+                                    </div>          
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card text-center">
+                                      <div class="card-body">
+                                        <h5 class="card-text">'.$d.'</h5>
+                                        </div>
+                                    </div>          
+                                </div>
+                            </div>';
+                          }
+                        ?> 
                       </div>
                     </div>          
                 </div>
