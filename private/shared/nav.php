@@ -30,9 +30,9 @@
         <li class="nav-item">
             <a class="nav-link" href= <?php echo $home_dir."event/events.php" ?> style="color:white">Events</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href=<?php echo $home_dir."event/event.php" ?> style="color:white">Event</a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a class="nav-link" href=<?php echo $home_dir."event/eventform.php" ?> style="color:white">Eventform</a>
         </li>

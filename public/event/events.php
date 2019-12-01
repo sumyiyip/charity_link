@@ -45,7 +45,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">'.$event->name.'</h5>
                                 <p class="card-text">'.$event->description.'</p>
-                                <a href="../event.php?id='.$event->id.'" class="btn btn-outline-success">Read more</a>
+                                <a href="../event/event.php?id='.$event->id.'" class="btn btn-outline-success">Read more</a>
                             </div>   
                             </div>          
                         </div>
