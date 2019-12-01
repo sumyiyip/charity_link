@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         
-                        </br>
+                        <br/>
                     
                         <div class="row">
                             <div class="col-md-4">
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         
-                        </br>
+                        <br/>
                   
                         <div class="row">
                             <div class="col-md-4">
@@ -72,7 +72,7 @@
                             </div>
                         </div>
                         
-                        </br>
+                        <br/>
                   
                         <div class="row">
                             <div class="col-md-4">
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                 
-                        </br>
+                        <br/>
                   
                         <div class="row">
                             <div class="col-md-4">
@@ -95,7 +95,7 @@
                             </div>
                         </div>
             
-                        </br>
+                        <br/>
                   
                         <div class="row">
                             <div class="col-md-4">
@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 
-                </br>
+                <br/>
 
                 <div class="row d-flex justify-content-center">
                     <input href="../event.php?id=<?php echo ("event_id") ?>" class="btn btn-outline-success" type="submit" value="Submit"> 
