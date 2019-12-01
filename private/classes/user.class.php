@@ -111,19 +111,22 @@ class User extends DatabaseObject{
             return false;
         }
     }
-    
-    static public function find_by_username($username) {
-        $sql = "SELECT * FROM " . static::$table_name . " ";
-        $sql .= "WHERE user_name='" . self::$database->escape_string($username) . "'";
-        $obj_array = static::find_by_sql($sql);
-        if(!empty($obj_array)) {
-            return array_shift($obj_array);
-        } else {
-            return false;
-        }
-    }
-    
 
+    public function get_all_event(){
+        $sql = "SELECT * FROM charity_event WHERE id IN(";
+        $sql .= "SELECT eid from participant WHERE uid = '".$this->id."');";
+        $event_arr = static::find_by_sql($sql);
+        return $event_arr;
     }
+
+    public function get_all_donation(){
+        $sql = "SELECT * FROM donation WHERE uid ='".$this->id."';";
+        return self::find_by_sql($sql);
+    }
+
+
+
+
+}
 
 ?>
