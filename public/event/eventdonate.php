@@ -17,12 +17,12 @@
         <link rel="stylesheet" href="../nav.css">
 
         <title>Charity Link</title>
-        
-    </head>
-    <body>
         <div>
             <?php include '../nav.php'; ?>
         </div>
+    </head>
+    <body>
+
         <br/>
         
         <div class="container">
@@ -88,9 +88,13 @@
                                 <label for="fname">Accepted Cards</label>
                             </div>
                             <div class="col-md-8">
-                                <img src="images/card_icon.jpg" alt="..." style="width: 4rem; height: 1.5rem;" >
+                                <img src="images/card_icon.jpg" alt="..." style="width: 4rem; height: 2rem;" >
+                                <a href="https://www.paypal.com/signin?returnUri=https%3A%2F%2Fwww.paypal.com%2Fmyaccount%2Ftransfer&state=%2F" target="_blank">
+                                    <img src="images/paypal_icon.jpg" alt="..." style="width: 4rem; height: 2rem;" >
+                                </a>
                             </div>
                         </div>
+                        <br/>
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="address">Name on Card</label>

@@ -56,11 +56,38 @@
   <?php echo display_errors($errors); ?>
 
   <form action="login.php" method="post">
-    Username:<br />
-    <input type="text" name="username" value="<?php echo h($username); ?>" /><br />
-    Password:<br />
-    <input type="password" name="password" value="" /><br />
-    <input type="submit" name="submit" value="Submit"  />
+      <div class="container">
+            <div class="card">
+              <div class="card-body">
+                <p class="card-title" style="text-align:center; font-weight:bold; font-size: 3rem;"><?php echo ("Log in") ?></p>
+                <div class="row">
+                    <div class="col-md">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-1.5">
+                                Username:
+                            </div>
+                            <div class="col-md-2"> 
+                                <input type="text" name="username" value="<?php echo h($username); ?>"/><br />
+                            </div>
+                        </div>
+                            <br/>
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-1.5">
+                                Password:
+                            </div>
+                            <div class="col-md-2"> 
+                                <input type="password" name="password" value="" /><br />
+                            </div>
+                        </div>
+                  </div>
+                </div> 
+                <br/>
+                <div class="row d-flex justify-content-center">
+                    <input type="submit" name="submit" value="Submit"  />
+                </div>
+              </div>
+            </div> 
+        </div>
   </form>
 
 </div>
