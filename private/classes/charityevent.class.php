@@ -83,13 +83,18 @@ class CharityEvent extends DatabaseObject{
     }
 
     public function donation_sum(){
-        $thing = $this->get_all_donators();
-        if (sizeof($thing) == 0){
-            return 0;
+        $sql = "SELECT SUM(amount) as amt FROM donation WHERE eid='".$this->id."'";
+        $result = self::$database->query($sql);
+        if(!$result) {
+          exit("Database query failed.");
         }
-        else{
-            return array_sum($thing);
-        }
+    
+        // results into objects
+        $object_array = [];
+        $record = $result->fetch_assoc(); 
+        
+        $result->free();
+        return $record['amt'];
     }
 
 }
