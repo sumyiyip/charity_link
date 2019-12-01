@@ -22,7 +22,13 @@
         </div>
     </head>
     <body>
-
+        
+        <br/>
+        
+        <div class="row d-flex justify-content-center">
+                     <img src="https://media.giphy.com/media/uhyTFbEwoyDio/giphy.gif" alt="Donate gif" style="width: 16rem; height: 12rem;" >
+        </div>
+        
         <br/>
         
         <div class="container">
