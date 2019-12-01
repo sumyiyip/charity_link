@@ -32,16 +32,7 @@ $id = $_SESSION['id'];?>
             <a class="nav-link" href=<?php echo $home_dir ?> style="color:white">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href= <?php echo $home_dir."event/events.php" ?> style="color:white">Events</a>
-        </li>
-        <!-- <li class="nav-item">
-            <a class="nav-link" href=<?php echo $home_dir."event/event.php" ?> style="color:white">Event</a>
-        </li> -->
-        <li class="nav-item">
-            <a class="nav-link" href=<?php echo $home_dir."event/eventform.php" ?> style="color:white">Eventform</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href=<?php echo $home_dir."event/eventdonate.php" ?>  style="color:white">Eventdonate</a>
+            <a class="nav-link" href= <?php echo $home_dir."event/events.php" ?> style="color:white">Charities</a>
         </li>
     </ul>
       
