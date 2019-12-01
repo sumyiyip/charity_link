@@ -3,7 +3,9 @@
     require("event_path.php");
 	// include the header
     require("../../private/shared/header.php");
-?>
+    require("../../private/initialize.php");
+    ?>
+    
 
 <html>
     <head>
@@ -18,10 +20,6 @@
         <title>Charity Link</title>
     </head>
     <body>
-        <div>
-         <?php include '../nav.php'; ?>
-        </div>
-
         <br/>
         
         <div class="container">
@@ -34,38 +32,27 @@
             
             <br/>
             
-            <div class="row">
-                <div class="col-md-2">
-                        <img src="images/charity_icon.png" class="card-img" alt="...">
-                </div>
-                                                                                     
-                <div class="col-md-10">
-                    <div class="card text-center">
-                      <div class="card-body">
-                        <h5 class="card-title"><?php echo("event_name") ?></h5>
-                        <p class="card-text"><?php echo ("event_decription") ?></p>
-                        <a href="../event.php?id=<?php echo ("event_id") ?>" class="btn btn-outline-success">Read more</a>
-                      </div>   
-                    </div>          
-                </div>
-            </div>
-    
-            </br>
-
-            <div class="row">
-                <div class="col-md-2">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/6/61/Squircle_circle_square.png" class="card-img" alt="...">
-                </div>
-                <div class="col-md-10">
-                    <div class="card text-center">
-                      <div class="card-body">
-                        <h5 class="card-title"><?php echo("event_name") ?></h5>
-                        <p class="card-text"><?php echo ("event_decription") ?></p>
-                        <a href="../event.php?id=<?php echo ("event_id") ?>" class="btn btn-outline-success">Read more</a>
-                      </div>
-                    </div>          
-                </div>
-            </div>
+            <?php 
+            $events = CharityEvent::find_by_sql("SELECT * FROM charity_event");
+            foreach($events as $event){
+                echo '<div class="row">
+                        <div class="col-md-2">
+                                <img src="images/charity_icon.png" class="card-img" alt="...">
+                        </div>
+                                                                                            
+                        <div class="col-md-10">
+                            <div class="card text-center">
+                            <div class="card-body">
+                                <h5 class="card-title">'.$event->name.'</h5>
+                                <p class="card-text">'.$event->description.'</p>
+                                <a href="../event.php?id='.$event->id.'" class="btn btn-outline-success">Read more</a>
+                            </div>   
+                            </div>          
+                        </div>
+                    </div>
+                    </br>';
+            }
+            ?>
         </div>
         
         
@@ -76,5 +63,5 @@
 </html>
 
 <?php
-	require("../shared/footer.php");
+    require("../../private/shared/footer.php");
 ?>
