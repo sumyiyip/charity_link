@@ -14,8 +14,18 @@
   $event = CharityEvent::find_by_id($id);
   $organiser = User::find_by_id($event->organiser_id);
   
-  
 ?>
+
+<?php  $user_id = $_SESSION['id'];
+  $charity_id = $_GET['id'];
+  echo $user_id . $charity_id;
+
+if ($_SERVER['REQUEST_METHOD']=='POST'){
+
+
+}
+
+  ?>
 
 <html>
     <head>
