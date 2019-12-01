@@ -26,7 +26,7 @@ class CharityEvent extends DatabaseObject{
         $this->postcode = $args['postcode'] ?? '';
         $this->organiser_id = $args['organiser_id'] ?? '';
         $this->imgurl = $args['imgurl'] ?? '';
-        $this->fund_goal = $args['fund_goal'] ?? '';
+        $this->fund_goal = $args['fund_goal'] ?? '0';
     }
 
 
@@ -49,6 +49,9 @@ class CharityEvent extends DatabaseObject{
             $this->errors[] = "Address expiry date cannot be blank.";
         }
         if(is_blank($this->postcode)){
+            $this->errors[] = "Postcode expiry date cannot be blank.";
+        }
+        if(is_blank($this->organiser_id)){
             $this->errors[] = "Postcode expiry date cannot be blank.";
         }
 
