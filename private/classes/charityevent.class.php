@@ -15,7 +15,6 @@ class CharityEvent extends DatabaseObject{
     public $organiser_id;
     public $imgurl;
     public $fund_goal;
-    public $fund_donator = array();
 
     public function __construct($args=[]) {
         $this->id = $args['id'] ?? '';
@@ -63,22 +62,23 @@ class CharityEvent extends DatabaseObject{
 
     public function get_all_donators(){
         $donator_id = self::find_by_sql("SELECT uid FROM donation WHERE eid = '".$this->id."';");
+        $fund_donator = array();
         foreach ($donator_id as $dId){
-            $donate_amount = self::find_by_sql("SELECT amount FROM donation WHERE uid ='".$dId."';");
-            $this->fund_donator += array($dId => $donate_amount);
+            $donate_amount =self:: find_by_sql("SELECT amount FROM donation WHERE uid ='".$dId."';");
+            $fund_donator += array($dId => $donate_amount);
         }
+        return $fund_donator;
     }
 
     public function donation_sum(){
-        return array_sum($this->get_all_donators());
+        $thing = $this->get_all_donators();
+        if (sizeof($thing) == 0){
+            return 0;
+        }
+        else{
+            return array_sum($thing);
+        }
     }
-
-
-
-
-
-
-
 
 }
 
