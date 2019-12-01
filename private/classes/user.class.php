@@ -123,9 +123,17 @@ class User extends DatabaseObject{
         $sql = "SELECT * FROM donation WHERE uid ='".$this->id."';";
         return self::find_by_sql($sql);
     }
-
-
-
+    
+    static public function find_by_username($username) {
+        $sql = "SELECT * FROM " . static::$table_name . " ";
+        $sql .= "WHERE user_name='" . self::$database->escape_string($username) . "'";
+        $obj_array = static::find_by_sql($sql);
+        if(!empty($obj_array)) {
+            return array_shift($obj_array);
+        } else {
+            return false;
+        }
+    }
 
 }
 
