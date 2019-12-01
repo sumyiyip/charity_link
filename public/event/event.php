@@ -14,6 +14,7 @@
   $event = CharityEvent::find_by_id($id);
   $organiser = User::find_by_id($event->organiser_id);
   
+  
 ?>
 
 <html>
@@ -82,6 +83,9 @@
                         <h5 class="card-title"><b>Participants</b></h5>
                         <?php  
                         $participants = $event->get_all_participants();
+                        if (sizeof($participants)==0){
+                          echo '</br>Support is on the way!';
+                        }
                         foreach ($participants as $p){
                             echo '</br>
                                   <div class="row">
@@ -109,8 +113,10 @@
                         
                         <?php
                           $donators = $event->get_all_donators();
-                          foreach ($donators as $p => $d){
-                            $user = User::find_by_id($p);
+                          if (sizeof($donators) == 0){
+                            echo "</br>No donators? Aw, it\'ll be okay :)";
+                          }
+                          foreach ($donators as $u => $a){
                             echo '</br> <div class="row">
                                 <div class="col-md-3">
                                         <img src="images/user.png" class="card-img" alt="...">
@@ -118,7 +124,7 @@
                                 <div class="col-md-6">
                                     <div class="card text-center">
                                       <div class="card-body">
-                                        <h5 class="card-title">'.$user->user_name.'</h5>
+                                        <h5 class="card-title">'.$u->user_name.'</h5>
                                         </div>
                                     </div>          
                                 </div>
@@ -140,7 +146,7 @@
             <br/>
             
             <?php
-            if (isset($_SESSION['id']) || 1==1){
+            if (isset($_SESSION['id'])){
               if ($_SESSION['id'] == $event->organiser_id || 1==1){
                 echo '<div class="row">
                     <div class="col-sm">
@@ -164,5 +170,5 @@
 </html>
 
 <?php
-	require("../shared/footer.php");
+	require("../../private/shared/footer.php");
 ?>

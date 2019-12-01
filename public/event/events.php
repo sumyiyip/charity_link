@@ -63,5 +63,5 @@
 </html>
 
 <?php
-    require("../../private/shared/footer.php");
+	require("../../private/shared/footer.php");
 ?>

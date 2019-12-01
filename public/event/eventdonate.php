@@ -171,5 +171,5 @@
 </html>
 
 <?php
-	require("../shared/footer.php");
+	require("../../private/shared/footer.php");
 ?>

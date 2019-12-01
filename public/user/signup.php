@@ -7,9 +7,6 @@
 
 <?php
 
-$title = 'Create User';
-include(SHARED_PATH . '/header.php');
-
 require_once('../../private/initialize.php');
 
 require_not_logged_in();
@@ -23,7 +20,7 @@ if(is_post_request()) {
   if($result === true) {
     $new_id = $user->id;
     $session->message('The user was created successfully.');
-    redirect_to(url_for('user.php?id=' . $new_id));
+    redirect_to(url_for('user/user.php?id=' . $new_id));
   } else {
     // show errors
   }
@@ -46,7 +43,7 @@ if(is_post_request()) {
 
       <?php include('form_fields.php'); ?>
 
-      <div id="operations">
+      <div id="operations" class="row d-flex justify-content-center">
         <input type="submit" value="Create User" />
       </div>
     </form>
@@ -57,4 +54,6 @@ if(is_post_request()) {
 <!-- 
 require_once('../../private/initialize.php'); -->
 
-<?php include("../../private/shared/footer.php"); ?>
+<?php
+	require("../../private/shared/footer.php");
+?>

@@ -6,13 +6,16 @@
     require("../../private/initialize.php");
 
     if (!isset($_SESSION['id'])){
-        redirect_to(url_for('index.php'));
+        redirect_to(url_for('user/login.php'));
     }
 
     if(is_post_request()) {
 
         // Create record using post parameters
         $event = new CharityEvent($_POST);
+        if (isset($_GET['id'])){
+            $event->id = $_GET['id'];
+        }
         $event->organiser_id = $_SESSION['id'];
         $result = $event->save();
 
@@ -20,7 +23,7 @@
             $event = $event->id;
             redirect_to(url_for('event/event.php?id=' . $new_id));
         } else {
-            // show errors
+            var_dump($event);
         }    
     } else {
         if (isset($_GET['id'])){
@@ -48,10 +51,11 @@
         <?php echo display_errors($event->errors); ?>
         <br/>
         
+        <form action="<?php echo url_for('/event/eventform.php?id='.$event->id); ?>" method="post">
         <div class="container">
             <div class="card">
               <div class="card-body">
-                <p class="card-title" style="text-align:center; font-weight:bold; font-size: 3rem;"><?php echo ("Create event form") ?></p>
+                <p class="card-title" style="text-align:center; font-weight:bold; font-size: 3rem;">Event</p>
                 <div class="row">
                     <div class="col-md">
                         <div class="row">
@@ -59,7 +63,7 @@
                                 <label for="charity_name">Charity Name</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" id="charity_name" name="name" value=<?php echo($event->name)?> placeholder="Terry's Charity">
+                                <input type="text" id="charity_name" name="name" value="<?php echo($event->name)?>" placeholder="Terry's Charity">
                             </div>
                         </div>
                         
@@ -70,7 +74,7 @@
                                 <label for="description">Description</label>
                             </div>
                             <div class="col-md-8">
-                                <textarea id="description" name="description"  value=<?php echo($event->description)?> rows="5" cols="33">Write the description for the event...
+                                <textarea id="description" name="description"  value="<?php echo($event->description)?>" rows="5" cols="33">Write the description for the event...
                                 </textarea>
                             </div>
                         </div>
@@ -82,7 +86,7 @@
                                 <label for="fund_goal">Fund Goal in £</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="number" id="fund_goal" name="fund_goal"  value=<?php echo($event->fund_goal)?> placeholder="100">
+                                <input type="number" id="fund_goal" name="fund_goal"  value="<?php echo($event->fund_goal)?>" placeholder="100">
                             </div>
                         </div>
                     </div>
@@ -103,7 +107,7 @@
                                 <label for="postcode">Postcode</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" id="postcode" name="postcode" value=<?php echo($event->postcode)?>  placeholder="W26BY">
+                                <input type="text" id="postcode" name="postcode" value="<?php echo($event->postcode)?>"  placeholder="W26BY">
                             </div>
                         </div>
                 
@@ -114,7 +118,7 @@
                                 <label for="start_date">Start date</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="datetime-local" id="start_date" name="start_date" value=<?php echo($event->start_date)?>
+                                <input type="datetime-local" id="start_date" name="start_date" value="<?php echo($event->start_date)?>"
                                         min="2019-01-01T00:00" max="2030-12-31T23:59">
                             </div>
                         </div>
@@ -126,7 +130,7 @@
                                 <label for="end_date">End date</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="datetime-local" id="end_date" name="end_date"  value=<?php echo($event->end_date)?>
+                                <input type="datetime-local" id="end_date" name="end_date"  value="<?php echo($event->end_date)?>"
                                         min="2019-01-01T00:00" max="2030-12-31T23:59">
                             </div>
                         </div>
@@ -141,7 +145,7 @@
               </div>
             </div> 
         </div>
-        
+        </form>        
         
                     
         
@@ -153,5 +157,5 @@
 </html>
 
 <?php
-	require("../shared/footer.php");
+	require("../../private/shared/footer.php");
 ?>

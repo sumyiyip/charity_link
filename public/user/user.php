@@ -4,7 +4,13 @@
 	require("user_path.php");
   require("../../private/shared/header.php");
 
-  require_once("../../private/initialize.php");  
+  require_once("../../private/initialize.php"); 
+  
+  if (!$_SESSION['logged_in']){
+    redirect_to(url_for("/user/login.php"));
+  }
+
+  $user = User::find_by_id($_SESSION['id']);
 ?>
 
 <html>
@@ -20,9 +26,7 @@
         <title>Charity Link</title>
     </head>
     <body>
-        <div>
-         <?php include '../nav.php'; ?>
-        </div>
+
         
         <div class="jumbotron jumbotron-fluid" style="background-color: #c0e3e5;">
           <div class="container">
@@ -35,10 +39,10 @@
             <br/>
             <div class="row">
                 <div class="col-md">
-                    <a href="../event/events.php?id=<?php echo ("event_join") ?>" class="btn btn-outline-success btn-block">Join event</a>
+                    <a href="../event/events.php" class="btn btn-outline-success btn-block">Join event</a>
                 </div>
                 <div class="col-md">
-                    <a href="../event/eventform.php?id=<?php echo ("event_create") ?>" class="btn btn-outline-success btn-block">Create event</a>
+                    <a href="../event/eventform.php" class="btn btn-outline-success btn-block">Create event</a>
                 </div>
             </div>
             <br/>
@@ -47,22 +51,30 @@
                     <div class="card text-center">
                           <div class="card-body">
                             <h5 class="card-text" style="text-align:center; font-weight:bold; text-decoration: underline; font-size: 2rem;">Events participated in</h5>
-                              <br/>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                            <img src="images/charity_icon.png" class="card-img" alt="...">
-                                    </div>
+                              <?php
+                                $events = $user->get_all_events_participated();
+                                if (sizeof($events) == 0){
+                                  echo '<br/>Fill up this list by going to wholesome events!';
+                                }
+                                foreach ($events as $event){
+                                  echo '<br/>
+                                  <div class="row">
+                                      <div class="col-md-4">
+                                              <img src="images/charity_icon.png" class="card-img" alt="...">
+                                      </div>
 
-                                    <div class="col-md-8">
-                                        <div class="card text-center">
-                                          <div class="card-body">
-                                            <h5 class="card-title"><?php echo("event_name") ?></h5>
-                                            <p class="card-text"><?php echo ("event_decription") ?></p>
-                                            <a href="../event.php?id=<?php echo ("event_id") ?>" class="btn btn-outline-success">Read more</a>
-                                          </div>   
-                                        </div>          
-                                    </div>  
-                                </div>
+                                      <div class="col-md-8">
+                                          <div class="card text-center">
+                                            <div class="card-body">
+                                              <h5 class="card-title"><b>'.$event->name.'</b></h5>
+                                              <p class="card-text">'.$event->description.'</p>
+                                              <a href="'.url_for("/event/event.php?id=".$event->id).'" class="btn btn-outline-success">Read more</a>
+                                            </div>   
+                                          </div>          
+                                      </div>  
+                                  </div>';
+                                }
+                              ?>
                         </div>
                     </div>
                 </div>
@@ -70,7 +82,13 @@
                     <div class="card text-center">
                           <div class="card-body">
                             <h5 class="card-text" style="text-align:center; font-weight:bold; text-decoration: underline; font-size: 2rem;">Events created</h5>
-                              <br/>
+                              <?php
+                              $eventmade = $user->get_all_events_created();
+                              if (sizeof($eventmade) == 0){
+                                echo '<br/>Fill up this list by hosting some charity events!';
+                              }
+                              foreach($eventmade as $event){
+                                echo '<br/>
                                 <div class="row">
                                     <div class="col-md-4">
                                             <img src="images/charity_icon.png" class="card-img" alt="...">
@@ -79,13 +97,15 @@
                                     <div class="col-md-8">
                                         <div class="card text-center">
                                           <div class="card-body">
-                                            <h5 class="card-title"><?php echo("event_name") ?></h5>
-                                            <p class="card-text"><?php echo ("event_decription") ?></p>
-                                            <a href="../event.php?id=<?php echo ("event_id") ?>" class="btn btn-outline-success">Read more</a>
+                                            <h5 class="card-title">'.$event->name.'</h5>
+                                            <h5 class="card-title">'.$event->description.'</h5>
+                                            <a href="'.url_for("event/event.php?id=".$event->id).'" class="btn btn-outline-success">Read more</a>
                                           </div>   
                                         </div>          
                                     </div>  
-                                </div>
+                                </div>';
+                              }
+                                ?>
                         </div>
                     </div>
                 </div>
@@ -100,5 +120,5 @@
 </html>
 
 <?php
-	require("../shared/footer.php");
+	require("../../private/shared/footer.php");
 ?>

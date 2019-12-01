@@ -14,7 +14,6 @@ class User extends DatabaseObject{
     public $phone_number;
 
 
-
     public function __construct($args=[]) {
         $this->id = $args['id'] ?? '';
         $this->user_name = $args['user_name'] ?? '';
@@ -112,16 +111,14 @@ class User extends DatabaseObject{
         }
     }
 
-    public function get_all_event(){
-        $sql = "SELECT * FROM charity_event WHERE id IN(";
-        $sql .= "SELECT eid from participant WHERE uid = '".$this->id."');";
-        $event_arr = static::find_by_sql($sql);
-        return $event_arr;
+    public function get_all_events_participated(){
+        $sql = "SELECT DISTINCT charity_event.* FROM charity_event, participant WHERE charity_event.id = participant.eid AND participant.uid=".$this->id."'";
+        return CharityEvent::find_by_sql($sql);
     }
 
-    public function get_all_donation(){
-        $sql = "SELECT * FROM donation WHERE uid ='".$this->id."';";
-        return self::find_by_sql($sql);
+    public function get_all_events_created(){
+        $sql = "SELECT DISTINCT * FROM charity_event WHERE organiser_id='".$this->id."'";
+        return CharityEvent::find_by_sql($sql);
     }
     
     static public function find_by_username($username) {

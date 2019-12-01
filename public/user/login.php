@@ -37,7 +37,7 @@
 		// Mark admin as logged in
         $session->login($user);
         session_start();
-        $_SESSION['id'] = $user;
+        $_SESSION['id'] = $user->id;
         $_SESSION["logged_in"] = true;
 		redirect_to(url_for('index.php'));
 		} else {
@@ -99,5 +99,5 @@
 
 
 <?php
-	include(SHARED_PATH."/footer.php");
+	require("../../private/shared/footer.php");
 ?>
