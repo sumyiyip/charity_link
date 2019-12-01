@@ -1,3 +1,5 @@
+<?php  session_start(); ?>
+
 <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -41,20 +43,36 @@
         </li>
     </ul>
       
-  <div class="form-inline my-2 my-lg-0">
+    <div class="form-inline my-2 my-lg-0">
       <!-- if user not logged in display next block -->
-      <a class="btn btn-outline-success my-2 my-sm-0" href=<?php echo $home_dir."user/login.php" ?> style="color:white">Log in</a>
+      <?php 
+
+
+      // echo $session->id;
+
+      if(! isset($_SESSION['id'])){
+
+      echo "<a class=\"btn btn-outline-success my-2 my-sm-0\" href=" . $home_dir .  "user/login.php style=\"color:white\">Log in</a>
       &nbsp;
-      <a class="btn btn-outline-success my-2 my-sm-0" href=<?php echo $home_dir."user/signup.php" ?>  style="color:white">Sign up</a>     
-      <!-- if user is logged in display next block -->
-      <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-        <a class="nav-link" id="profileButton" href=<?php echo $home_dir."user/user.php" ?>  style="color:white">Profile</a>
+      <a class=\"btn btn-outline-success my-2 my-sm-0\" href=". $home_dir . "user/signup.php style=\"color:white\">Sign up</a>";
+      }
+
+      else if ( isset($_SESSION['id'])){
+
+      //<!-- if user is logged in display next block -->
+      
+      echo " <ul class=\"navbar-nav mr-auto\">
+          <li class=\"nav-item\">
+        <a class=\"nav-link\" id=\"profileButton\" href= " .  $home_dir . "user/user.php style=\"color:white\">" . $_SESSION['username'] . "</a>
       </li>
-          <li class="nav-item">
-      <a class="btn btn-outline-success my-2 my-sm-0" href=<?php echo $home_dir."user/logout.php" ?>  style="color:white">Log out</a>    
+          <li class=\"nav-item\">
+      <a class=\"btn btn-outline-success my-2 my-sm-0\" href=" . $home_dir . "user/logout.php style=\"color:white\">Log out</a>    
           </li>
       </ul>
+      ";
+      }
+      ?>
+      
       </div>
 <!--
       <li class="nav-item dropdown">

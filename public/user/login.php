@@ -30,11 +30,15 @@
 
 	// if there were no errors, try to login
 	if(empty($errors)) {
+        $_SESSION['username'] = $username;
 		$user = User::find_by_username($username);
 		// test if admin found and password is correct
 		if($user != false && $user->verify_password($password)) {
 		// Mark admin as logged in
-		$session->login($user);
+        $session->login($user);
+        session_start();
+        $_SESSION['id'] = $user;
+        $_SESSION["logged_in"] = true;
 		redirect_to(url_for('index.php'));
 		} else {
 		// username not found or password does not match
