@@ -1,13 +1,6 @@
-<?php 
-	$title = "Charity Link";
-	// include the header
-	require("../../private/shared/header.php");
-?>
-
-<html>
-
-</html>
-
 <?php
-	require("../shared/footer.php");
+require_once('../../private/initialize.php');
+// Log out the user
+$session->logout();
+redirect_to(url_for('index.php'));
 ?>
