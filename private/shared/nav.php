@@ -1,5 +1,11 @@
+<?php
+  if (!isset($home_dir)){
+    $home_dir = "../public/";
+  }
+  ?>
+
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #303c6c;">
-  <a class="navbar-brand" href="../index.php" style="color:white">CharityLink</a>
+  <a class="navbar-brand" href=<?php echo $home_dir ?> style="color:white">CharityLink</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,16 +13,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link" href="../index.php" style="color:white">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href=<?php echo $home_dir ?> style="color:white">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../event/events.php" style="color:white">Events</a>
+            <a class="nav-link" href= <?php echo $home_dir."event/events.php" ?> style="color:white">Events</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../event/event.php" style="color:white">Event</a>
+            <a class="nav-link" href=<?php echo $home_dir."event/event.php" ?> style="color:white">Event</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../event/eventform.php" style="color:white">Eventform</a>
+            <a class="nav-link" href=<?php echo $home_dir."event/eventform.php" ?> style="color:white">Eventform</a>
         </li>
     </ul>
       
