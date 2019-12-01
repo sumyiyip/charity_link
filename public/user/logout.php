@@ -1,4 +1,5 @@
 <?php
+require("user_path.php");
 require_once('../../private/initialize.php');
 // Log out the user
 $session->logout();

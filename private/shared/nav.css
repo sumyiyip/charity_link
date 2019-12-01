@@ -1,0 +1,27 @@
+.btn-outline-success{
+    color: white!important;
+    background-color: #303c6c!important;
+    border-color: white!important;
+}
+
+.btn-outline-success:hover, .btn-outline-success:active{
+    color: white!important;
+    background-color: #7eb6bd!important;
+    border-color: white!important;
+}
+
+#profileButton {
+    
+}
+
+#searchButton{
+    color: white!important;
+    background-color: #303c6c!important;
+    border-color: #303c6c!important;
+}
+
+#searchButton:hover, #searchButton:active{
+    color: #303c6c!important;
+    background-color: #7eb6bd!important;
+    border-color: #303c6c!important;
+}

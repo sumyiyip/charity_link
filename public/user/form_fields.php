@@ -1,4 +1,5 @@
 <?php
+	require("user_path.php");
 // prevents this code from being loaded directly in the browser
 // or without first setting the necessary object
 ?>

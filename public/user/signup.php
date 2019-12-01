@@ -1,3 +1,11 @@
+<?php 
+	$title = "Charity Link";
+  // include the header
+  require("user_path.php");
+	include ("../../private/shared/header.php");
+
+?>
+
 <?php
 
 $title = 'Create User';
@@ -47,5 +55,7 @@ if(is_post_request()) {
   </div>
 
 </div>
+<!-- 
+require_once('../../private/initialize.php'); -->
 
-<?php include(SHARED_PATH . '/footer.php'); ?>
+<?php include("../../private/shared/footer.php"); ?>

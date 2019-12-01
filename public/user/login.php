@@ -1,4 +1,12 @@
 <?php 
+	$title = "Charity Link";
+	// include the header
+	require("user_path.php");
+	include ("../private/shared/header.php");
+
+?>
+
+<?php 
 
 
 	require_once('../../private/initialize.php');

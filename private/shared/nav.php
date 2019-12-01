@@ -1,3 +1,15 @@
+<head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="nav.css">
+
+        <title>Charity Link</title>
+    </head>
+
 <?php
   if (!isset($home_dir)){
     $home_dir = "../public/";
@@ -28,16 +40,16 @@
       
   <div class="form-inline my-2 my-lg-0">
       <!-- if user not logged in display next block -->
-      <a class="btn btn-outline-success my-2 my-sm-0" href="../user/login.php" style="color:white">Log in</a>
+      <a class="btn btn-outline-success my-2 my-sm-0" href=<?php echo $home_dir."user/login.php" ?> style="color:white">Log in</a>
       &nbsp;
-      <a class="btn btn-outline-success my-2 my-sm-0" href="../user/singup.php" style="color:white">Sign up</a>     
+      <a class="btn btn-outline-success my-2 my-sm-0" href=<?php echo $home_dir."user/signup.php" ?>  style="color:white">Sign up</a>     
       <!-- if user is logged in display next block -->
       <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-        <a class="nav-link" id="profileButton" href="../user/user.php" style="color:white">Profile</a>
+        <a class="nav-link" id="profileButton" href=<?php echo $home_dir."user/user.php" ?>  style="color:white">Profile</a>
       </li>
           <li class="nav-item">
-      <a class="btn btn-outline-success my-2 my-sm-0" href="../user/logout.php" style="color:white">Log out</a>    
+      <a class="btn btn-outline-success my-2 my-sm-0" href=<?php echo $home_dir."user/logout.php" ?>  style="color:white">Log out</a>    
           </li>
       </ul>
       </div>
