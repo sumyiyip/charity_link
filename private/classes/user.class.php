@@ -112,6 +112,21 @@ class User extends DatabaseObject{
         }
     }
 
+    public function get_all_event(){
+        $sql = "SELECT * FROM charity_event WHERE id IN(";
+        $sql .= "SELECT eid from participant WHERE uid = '".$this->id."');";
+        $event_arr = static::find_by_sql($sql);
+        return $event_arr;
     }
+
+    public function get_all_donation(){
+        $sql = "SELECT * FROM donation WHERE uid ='".$this->id."';";
+        return self::find_by_sql($sql);
+    }
+
+
+
+
+}
 
 ?>
