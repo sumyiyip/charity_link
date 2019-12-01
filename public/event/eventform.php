@@ -47,7 +47,7 @@
 
         <title>Charity Link</title>
     </head>
-    <body>
+    <body style="background-color: #c0e3e5;">
         <?php echo display_errors($event->errors); ?>
         <br/>
         
