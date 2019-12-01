@@ -2,8 +2,31 @@
 	$title = "Charity Link";
 	require("event_path.php");
 	// include the header
-	require("../../private/shared/header.php");
-?>
+    require("../../private/shared/header.php");
+    require("../../private/initialize.php");
+
+    if(is_post_request()) {
+
+        // Create record using post parameters
+        $event = new CharityEvent($_POST);
+        $event->organiser_id = $_SESSION['id'];
+        $result = $event->save();
+
+        if($result === true) {
+            $event = $event->id;
+            redirect_to(url_for('event/event.php?id=' . $new_id));
+        } else {
+            // show errors
+        }    
+    } else {
+        if (isset($_GET['id'])){
+            $event = CharityEvent::find_by_id($_GET['id']);
+        }
+        else{
+            $event = new CharityEvent;
+        }
+    }
+    ?>
 
 <html>
     <head>
@@ -112,7 +135,7 @@
                 <br/>
 
                 <div class="row d-flex justify-content-center">
-                    <input href="../event.php?id=<?php echo ("event_id") ?>" class="btn btn-outline-success" type="submit" value="Submit"> 
+                    <input href="../event.php?id=<?php echo ($event->id)?>" class="btn btn-outline-success" type="submit" value="Submit"> 
                 </div>
               </div>
             </div> 
