@@ -25,7 +25,7 @@
         <div class="jumbotron jumbotron-fluid" style="background-color: #c0e3e5;">
           <div class="container">
             <h1 class="display-4">Profile</h1>
-            <p class="lead">Welcome to your profile.</p>
+            <p class="lead">Welcome back, <?php echo $_SESSION['username']; ?></p>
           </div>
         </div>
         
