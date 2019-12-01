@@ -37,7 +37,7 @@
             <a class="nav-link" href=<?php echo $home_dir."event/eventform.php" ?> style="color:white">Eventform</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../event/eventdonate.php" style="color:white">Eventdonate</a>
+            <a class="nav-link" href=<?php echo $home_dir."/event/eventdonate.php" ?>  style="color:white">Eventdonate</a>
         </li>
     </ul>
       
