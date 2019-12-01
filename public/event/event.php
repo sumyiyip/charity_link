@@ -3,6 +3,7 @@
   require("event_path.php");
 	// include the header
   require("../../private/shared/header.php");
+  require("../../private/database.php");
   
   require_once("../../private/initialize.php");
   
@@ -16,12 +17,12 @@
   
 ?>
 
-<?php  $user_id = $_SESSION['id'];
-  $charity_id = $_GET['id'];
-  echo $user_id . $charity_id;
+<?php  
+$user_id = $_SESSION['id'];
+$charity_id = $_GET['id'];
 
 if ($_SERVER['REQUEST_METHOD']=='POST'){
-
+    
 
 }
 
@@ -77,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
                         <p class="card-text">Fund goal: <?php echo ($event->fund_goal); ?></p>
                         <div class="row">
                             <div class="col-sm">
-                                <a href="<?php echo (url_for("/event/eventjoin.php?id=.$event->id")); ?>" class="btn btn-outline-success btn-block">Join</a>
+                            <a href="<?php echo (url_for("/event/join.php?id=$event->id&user_id=$user_id")); ?>" class="btn btn-outline-success btn-block">Join</a>
                             </div>
                             <div class="col-sm">
                                 <a href="<?php echo (url_for("/event/eventdonate.php?id=.$event->id")); ?>" class="btn btn-outline-success btn-block">Donate</a>
