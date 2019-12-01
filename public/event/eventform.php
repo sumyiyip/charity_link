@@ -55,7 +55,7 @@
         <div class="container">
             <div class="card">
               <div class="card-body">
-                <p class="card-title" style="text-align:center; font-weight:bold; font-size: 3rem;">Event</p>
+                <p class="card-title" style="text-align:center; font-weight:bold; font-size: 3rem;">Create a charity</p>
                 <div class="row">
                     <div class="col-md">
                         <div class="row">
@@ -74,7 +74,7 @@
                                 <label for="description">Description</label>
                             </div>
                             <div class="col-md-8">
-                                <textarea id="description" name="description"  value="<?php echo($event->description)?>" rows="5" cols="33">Write the description for the event...
+                                <textarea id="description" name="description"  value="<?php echo($event->description)?>" rows="5" cols="33">Write the description for the charity...
                                 </textarea>
                             </div>
                         </div>
