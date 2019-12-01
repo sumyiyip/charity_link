@@ -39,10 +39,10 @@
             <br/>
             <div class="row">
                 <div class="col-md">
-                    <a href="../event/events.php" class="btn btn-outline-success btn-block">Join event</a>
+                    <a href="../event/events.php" class="btn btn-outline-success btn-block">Join charity event</a>
                 </div>
                 <div class="col-md">
-                    <a href="../event/eventform.php" class="btn btn-outline-success btn-block">Create event</a>
+                    <a href="../event/eventform.php" class="btn btn-outline-success btn-block">Create charity event</a>
                 </div>
             </div>
             <br/>
@@ -50,11 +50,11 @@
                 <div class="col-md">
                     <div class="card text-center">
                           <div class="card-body">
-                            <h5 class="card-text" style="text-align:center; font-weight:bold; text-decoration: underline; font-size: 2rem;">Events participated in</h5>
+                            <h5 class="card-text" style="text-align:center; font-weight:bold; text-decoration: underline; font-size: 2rem;">Charity events participated in</h5>
                               <?php
                                 $events = $user->get_all_events_participated();
                                 if (sizeof($events) == 0){
-                                  echo '<br/>Fill up this list by going to wholesome events!';
+                                  echo '<br/>Fill up this list by going to wholesome charity events!';
                                 }
                                 foreach ($events as $event){
                                   echo '<br/>
@@ -81,7 +81,7 @@
                 <div class="col-md">
                     <div class="card text-center">
                           <div class="card-body">
-                            <h5 class="card-text" style="text-align:center; font-weight:bold; text-decoration: underline; font-size: 2rem;">Events created</h5>
+                            <h5 class="card-text" style="text-align:center; font-weight:bold; text-decoration: underline; font-size: 2rem;">Charity events created</h5>
                               <?php
                               $eventmade = $user->get_all_events_created();
                               if (sizeof($eventmade) == 0){

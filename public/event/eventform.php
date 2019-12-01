@@ -55,7 +55,7 @@
         <div class="container">
             <div class="card">
               <div class="card-body">
-                <p class="card-title" style="text-align:center; font-weight:bold; font-size: 3rem;">Create a charity</p>
+                <p class="card-title" style="text-align:center; font-weight:bold; font-size: 3rem;">Create charity event</p>
                 <div class="row">
                     <div class="col-md">
                         <div class="row">
