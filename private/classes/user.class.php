@@ -111,6 +111,18 @@ class User extends DatabaseObject{
             return false;
         }
     }
+    
+    static public function find_by_username($username) {
+        $sql = "SELECT * FROM " . static::$table_name . " ";
+        $sql .= "WHERE user_name='" . self::$database->escape_string($username) . "'";
+        $obj_array = static::find_by_sql($sql);
+        if(!empty($obj_array)) {
+            return array_shift($obj_array);
+        } else {
+            return false;
+        }
+    }
+    
 
     }
 
