@@ -17,12 +17,12 @@
         <link rel="stylesheet" href="../nav.css">
 
         <title>Charity Link</title>
+        
+    </head>
+    <body>
         <div>
             <?php include '../nav.php'; ?>
         </div>
-    </head>
-    <body>
-
         <br/>
         
         <div class="container">
