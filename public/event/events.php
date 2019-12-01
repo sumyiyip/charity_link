@@ -1,10 +1,12 @@
 <?php 
-	$title = "Charity Link";
+    $title = "Charity Link";
+    require("event_path.php");
 	// include the header
     require("../../private/shared/header.php");
     require("../../private/initialize.php");
     ?>
     
+
 <html>
     <head>
         <!-- Required meta tags -->

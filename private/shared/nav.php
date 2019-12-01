@@ -1,5 +1,23 @@
+<head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="nav.css">
+
+        <title>Charity Link</title>
+    </head>
+
+<?php
+  if (!isset($home_dir)){
+    $home_dir = "../public/";
+  }
+  ?>
+
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #303c6c;">
-  <a class="navbar-brand" href="../index.php" style="color:white">CharityLink</a>
+  <a class="navbar-brand" href=<?php echo $home_dir ?> style="color:white">CharityLink</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,31 +25,34 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link" href="../index.php" style="color:white">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href=<?php echo $home_dir ?> style="color:white">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../event/events.php" style="color:white">Events</a>
+            <a class="nav-link" href= <?php echo $home_dir."event/events.php" ?> style="color:white">Events</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../event/event.php" style="color:white">Event</a>
+            <a class="nav-link" href=<?php echo $home_dir."event/event.php" ?> style="color:white">Event</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../event/eventform.php" style="color:white">Eventform</a>
+            <a class="nav-link" href=<?php echo $home_dir."event/eventform.php" ?> style="color:white">Eventform</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=<?php echo $home_dir."event/eventdonate.php" ?>  style="color:white">Eventdonate</a>
         </li>
     </ul>
       
   <div class="form-inline my-2 my-lg-0">
       <!-- if user not logged in display next block -->
-      <a class="btn btn-outline-success my-2 my-sm-0" href="../user/login.php" style="color:white">Log in</a>
+      <a class="btn btn-outline-success my-2 my-sm-0" href=<?php echo $home_dir."user/login.php" ?> style="color:white">Log in</a>
       &nbsp;
-      <a class="btn btn-outline-success my-2 my-sm-0" href="../user/singup.php" style="color:white">Sign up</a>     
+      <a class="btn btn-outline-success my-2 my-sm-0" href=<?php echo $home_dir."user/signup.php" ?>  style="color:white">Sign up</a>     
       <!-- if user is logged in display next block -->
       <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-        <a class="nav-link" id="profileButton" href="../user/user.php" style="color:white">Profile</a>
+        <a class="nav-link" id="profileButton" href=<?php echo $home_dir."user/user.php" ?>  style="color:white">Profile</a>
       </li>
           <li class="nav-item">
-      <a class="btn btn-outline-success my-2 my-sm-0" href="../user/logout.php" style="color:white">Log out</a>    
+      <a class="btn btn-outline-success my-2 my-sm-0" href=<?php echo $home_dir."user/logout.php" ?>  style="color:white">Log out</a>    
           </li>
       </ul>
       </div>

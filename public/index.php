@@ -1,64 +1,69 @@
 <?php 
 	$title = "Charity Link";
 	// include the header
-	include ("../private/shared/header.php");
+  include ("../private/shared/header.php");
+  require ("../private/database.php");
 
 ?>
 
+
 <html>
     <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="nav.css">
-
         <title>Charity Link</title>
     </head>
     <body>
-        <div>
-         <?php include 'nav.php'; ?>
-        </div>
         
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
-            <h1 class="display-4">Welcome</h1>
-            <p class="lead">Insert welcome message.</p>
+            <h1 class="display-4">Welcome to Charity Link</h1>
+            <p class="lead">The Network that Links Charities and the People.</p>
           </div>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-sm">
-                    <div class="card text-center" style="width: 20rem;">
-                      <div class="card-body">
-                        <h5 class="card-title"><?php echo("event_name") ?></h5>
-                        <p class="card-text"><?php echo ("event_decription") ?></p>
-                        <a href="<?php echo ("event_url") ?>" class="btn btn-outline-success">Read more</a>
-                      </div>
-                    </div>
+
+                <style type="text/css">
+                .card-img-top {
+                  width: 100%;
+                  min-height: 220px;
+                  object-fit: cover;
+                }
+                </style>
+                
+
+                <?php
+                $con = db_connect();
+
+                $query = "SELECT * FROM post";
+                $result_set = mysqli_query($con, $query);
+
+                while ($event = mysqli_fetch_assoc($result_set)) {
+
+                  $name = $event['name'];
+
+                  echo "<div class=\"col-sm\"> ";
+                  echo "<div class=\"card text-center\" style=\"width: 20rem;\">";
+                  echo "  <div class=\"card-body\">";
+                  echo "    <h5 class=\"card-title\">" . $name . "</h5>";
+                  echo "    <img src=" . $event["imgurl"] . " class=\"card-img-top\" >";
+                  echo "    <p class=\"card-text\">" . $description . "</p>";
+                  echo "    <a href=event/article.php?id=". $event['id'] . " event/event.php class=\"btn btn-outline-success\">Read more</a>";
+                  echo "  </div>";
+                  echo "</div>";
+                  echo "</div>";
+                  
+                }
+                db_disconnect($con);
+
+                  ?>
+                 
+
+
+
                 </div>
-                <div class="col-sm">
-                    <div class="card text-center" style="width: 20rem;">
-                      <div class="card-body">
-                        <h5 class="card-title"><?php echo("event_name") ?></h5>
-                        <p class="card-text"><?php echo ("event_decription") ?></p>
-                        <a href="<?php echo ("event_url") ?>" class="btn btn-outline-success">Read more</a>
-                      </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card text-center" style="width: 20rem;">
-                      <div class="card-body">
-                        <h5 class="card-title"><?php echo("event_name") ?></h5>
-                        <p class="card-text"><?php echo ("event_decription") ?></p>
-                        <a href="<?php echo ("event_url") ?>" class="btn btn-outline-success">Read more</a>
-                      </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
+            </div> 
         
         
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
