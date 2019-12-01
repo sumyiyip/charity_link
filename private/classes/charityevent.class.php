@@ -70,11 +70,7 @@ class CharityEvent extends DatabaseObject{
     }
 
     public function donation_sum(){
-        $sum = 0;
-        for($i = 0; $i <= $this->get_all_donators().count(); $i++){
-            $sum += $this->get_all_donators()[$i];
-        }
-        return sum;
+        return array_sum($this->get_all_donators());
     }
 
 
