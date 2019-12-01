@@ -2,7 +2,9 @@
 	$title = "Charity Link";
 	// include the header
 	require("user_path.php");
-	require("../../private/shared/header.php");
+  require("../../private/shared/header.php");
+
+  require_once("../../private/initialize.php");  
 ?>
 
 <html>

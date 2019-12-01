@@ -4,11 +4,12 @@
 	// include the header
   require("../../private/shared/header.php");
   
-  require("../../private/initialize.php");
+  require_once("../../private/initialize.php");
   
   if (!isset($_GET["id"])){
-    redirect(url_for("index.php"));
+    redirect_to(url_for("index.php"));
   }
+
   $id = $_GET["id"];
   $event = CharityEvent::find_by_id($id);
   $organiser = User::find_by_id($event->organiser_id);
@@ -138,14 +139,20 @@
 
             <br/>
             
-            <div class="row">
-                <div class="col-sm">
-                    <a href="<?php echo (url_for("event/eventform.php?id=.$event->id")); ?>" class="btn btn-outline-success btn-block">Edit</a>
-                </div>
-                <div class="col-sm">
-                    <a href="<?php echo (url_for("eventdelete.php?id=.$event->id")); ?>" class="btn btn-outline-success btn-block">Delete</a>
-                </div>
-            </div>
+            <?php
+            if (isset($_SESSION['id']) || 1==1){
+              if ($_SESSION['id'] == $event->organiser_id || 1==1){
+                echo '<div class="row">
+                    <div class="col-sm">
+                        <a href="'.url_for("event/eventform.php?id=".$event->id).'" class="btn btn-outline-success btn-block">Edit</a>
+                    </div>
+                    <div class="col-sm">
+                        <a href="'.url_for("event/eventdelete.php?id=".$event->id).'" class="btn btn-outline-success btn-block">Delete</a>
+                    </div>
+                  </div>';
+              }
+            }
+            ?>
                 
         </div>
         

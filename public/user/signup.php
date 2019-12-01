@@ -3,8 +3,7 @@
   // include the header
   require("user_path.php");
 	include ("../../private/shared/header.php");
-
-?>
+  require_once("../../private/initialize.php");?>
 
 <?php
 
@@ -24,7 +23,7 @@ if(is_post_request()) {
   if($result === true) {
     $new_id = $user->id;
     $session->message('The user was created successfully.');
-    redirect_to(url_for('show.php?id=' . $new_id));
+    redirect_to(url_for('user.php?id=' . $new_id));
   } else {
     // show errors
   }
