@@ -16,8 +16,8 @@
         
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
-            <h1 class="display-4">Welcome</h1>
-            <p class="lead">Insert welcome message.</p>
+            <h1 class="display-4">Welcome to Charity Link</h1>
+            <p class="lead">The Network that Links Charities and the People.</p>
           </div>
         </div>
         <div class="container">
