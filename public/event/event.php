@@ -38,7 +38,7 @@
         
         <div class="container">
             <div class="row d-flex justify-content-center">
-                     <img src="images/charity_icon.png" alt="...">
+                     <img src="<?php echo($event->image); ?>" alt="...">
             </div>
             
             <br/>

@@ -83,7 +83,7 @@ INSERT INTO charity_event(name, description, start_date, end_date, address, post
 VALUES("Shelter the people", "We will be providing relief to homeless people for the upcoming storm next week.", "2019-12-30", "2019-12-31", "34 Aldwych, "WC2B4BG", 5, "shelter.jpg", 20);
 
 INSERT INTO charity_event(name, description, start_date, end_date, address, postcode, organiser_id, imgurl, fund_goal)
-VALUES("Free chicken soup", "Free chicken soup", "2019-12-30", "2019-12-31", "51 Sporle Court", "SW112ER", , "", 0);
+VALUES("No cigarette ", "Let", "2019-12-30", "2019-12-31", "51 Sporle Court", "SW112ER", , "", 0);
 
 INSERT INTO charity_event(name, description, start_date, end_date, address, postcode, organiser_id, imgurl, fund_goal)
 VALUES("Free chicken soup", "Handing out birthday cake for the hungry poor!", "2019-12-30", "2019-12-31", "51 Sporle Court", "SW112ER", 3, "", 0);
