@@ -3,7 +3,16 @@
   require("event_path.php");
 	// include the header
   require("../../private/shared/header.php");
-
+  
+  require("../../private/initialize.php");
+  
+  if (!isset($_GET["id"])){
+    redirect(url_for("index.php"));
+  }
+  $id = $_GET["id"];
+  $event = CharityEvent::find_by_id($id);
+  $organiser = User::find_by_id($event->organiser_id);
+  
 ?>
 
 <html>
@@ -20,7 +29,7 @@
     </head>
     <body>
         <div>
-         <?php include '../nav.php'; ?>
+         <?php //include '../nav.php'; ?>
         </div>
 
         <br/>
@@ -36,26 +45,26 @@
                 <div class="col-md">
                     <div class="card">
                       <div class="card-body">
-                        <p class="card-text"><?php echo ("event_name") ?></p>
-                        <p class="card-text"><?php echo ("event_organiser") ?></p>
-                        <p class="card-text"><?php echo ("event_description") ?></p>
+                        <p class="card-text"><b><?php echo ($event->name); ?></b></p>
+                        <p class="card-text">Organised by <?php echo ($organiser->user_name); ?></p>
+                        <p class="card-text"><?php echo ($event->description); ?></p>
                       </div>
                     </div> 
                 </div>
                 <div class="col-md">
                     <div class="card">
                       <div class="card-body">
-                        <p class="card-text"><?php echo ("event_location") ?></p>
-                        <p class="card-text"><?php echo ("event_startdate") ?></p>
-                        <p class="card-text"><?php echo ("event_enddate") ?></p>
-                        <p class="card-text"><?php echo ("event_current_fund") ?></p>
-                        <p class="card-text"><?php echo ("event_goal_fund") ?></p>
+                        <p class="card-text">Address: <?php echo ($event->address." ".$event->postcode) ?></p>
+                        <p class="card-text">Start date: <?php echo ($event->start_date); ?></p>
+                        <p class="card-text">End date: <?php echo ($event->end_date); ?></p>
+                        <p class="card-text">Current fund: <?php echo ($event->donation_sum()); ?></p>
+                        <p class="card-text">Fund goal: <?php echo ($event->fund_goal); ?></p>
                         <div class="row">
                             <div class="col-sm">
-                                <a href="<?php echo ("event_join") ?>" class="btn btn-outline-success btn-block">Join</a>
+                                <a href="<?php echo (url_for("/event/eventjoin.php?id=.$event->id")); ?>" class="btn btn-outline-success btn-block">Join</a>
                             </div>
                             <div class="col-sm">
-                                <a href="../eventdonate.php?id=<?php echo ("event_donate") ?>" class="btn btn-outline-success btn-block">Donate</a>
+                                <a href="<?php echo (url_for("/event/eventdonate.php?id=.$event->id")); ?>" class="btn btn-outline-success btn-block">Donate</a>
                             </div>
                         </div>
                       </div>
@@ -161,10 +170,10 @@
             
             <div class="row">
                 <div class="col-sm">
-                    <a href="../eventform.php?id=<?php echo ("event_edit") ?>" class="btn btn-outline-success btn-block">Edit</a>
+                    <a href="<?php echo (url_for("event/eventform.php?id=.$event->id")); ?>" class="btn btn-outline-success btn-block">Edit</a>
                 </div>
                 <div class="col-sm">
-                    <a href="<?php echo ("event_delete") ?>" class="btn btn-outline-success btn-block">Delete</a>
+                    <a href="<?php echo (url_for("eventdelete.php?id=.$event->id")); ?>" class="btn btn-outline-success btn-block">Delete</a>
                 </div>
             </div>
                 
